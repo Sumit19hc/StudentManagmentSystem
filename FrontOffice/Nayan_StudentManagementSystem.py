@@ -1,23 +1,38 @@
+def CreateRegister():
+    file = open("studentinfo.txt", "a+")
+    return file
+
+def WriteToRegister(f, name, age, mob_number):
+    f.write("{}|{}|{}\n".format(name, age, mob_number))
+    f.close()
+
+def ReadRegister():
+    n = open("studentinfo.txt")
+    print(n.read())
+
+
 def header():
     print('''------------------------ \nGovernment Polytechnic \n------------------------''')
 
 
-def add():
+def add(f):
     print("Add New Student")
     name = input("Enter Name :- ")
     age = int(input("Enter Age :- "))
-    mob_number = int(input("Enter mob_number :-"))
+    mob_number = int(input("Enter mob_number :- "))
+    WriteToRegister(f, name, age, mob_number)
     print("New Student is added")
 
 
-def delete():
-    name = input("Enter Name of Student:- ")
-    print("Delete Student")
+#
+# def delete():
+#     name = input("Enter Name of Student:- ")
+#     print("Delete Student")
 
 
-def search():
-    name = input("Enter Name of Student:- ")
-    print("It should display student Name", name)
+# def search():
+#     name = input("Enter Name of Student:- ")
+#     print("It should display student Name", name)
 
 
 def choice():
@@ -25,16 +40,19 @@ def choice():
     choice = int(input("Enter You choice :- "))
     return choice
 
+
 if __name__ == "__main__":
+    f = CreateRegister()
     ch = choice()
     if ch == 1:
         header()
-        add()
+        add(f)
+        ReadRegister()
     elif ch == 2:
-        header()
-        delete()
+        # header()
+        # delete()
     elif ch == 3:
-        header()
-        search()
+        # header()
+        # search()
     else:
         print("Invalid Choice")
