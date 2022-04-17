@@ -1,40 +1,58 @@
+def CreateRegister():
+    file = open("studentinfo.txt", "a+")
+    return file
+
+def WriteToRegister(f, name, age, mob_number):
+    f.write("{}|{}|{}\n".format(name, age, mob_number))
+    f.close()
+
+def ReadRegister():
+    n = open("studentinfo.txt")
+    print(n.read())
+
+
+def header():
+    print('''------------------------ \n  G. M. C. Chindwara.. \n------------------------''')
+
+
+def add(f):
+    print("Add New Student")
+    name = input("Enter Name :- ")
+    age = int(input("Enter Age :- "))
+    mob_number = int(input("Enter mob_number :- "))
+    WriteToRegister(f, name, age, mob_number)
+    print("New Student is added")
+
+
 #
-# print("=========================================\n")
-# print("           Name of College               \n")
-# print("=========================================\n")
-#
-# print("1.Add new Student")
-# print("2.Delete Student")
-# print("3.Search Student")
-#
-# choice =  int(input("Enter You choice  :-\n "))
-# if(choice == 1):
-#     print("=========================================\n")
-#     print("      Name of College:-Add new student   \n")
-#     print("=========================================\n")
-#     name = input("Enter Name :- ")
-#     age = int(input("Enter Age :- "))
-#     phone_number = int(input("Enter Phone Number :-"))
-#     print("New Student is added")
-#
-# elif(choice == 2):
-#     print("=========================================\n")
-#     print("     Name of College :- Delete Student   \n")
-#     print("=========================================\n")
+# def delete():
 #     name = input("Enter Name of Student:- ")
 #     print("Delete Student")
-#
-# elif(choice == 3):
-#     print("=========================================\n")
-#     print("     Name of College :- Search Student   \n")
-#     print("=========================================\n")
+
+
+# def search():
 #     name = input("Enter Name of Student:- ")
-#     age = int(input("Enter Age :- "))
-#     phone_number = int(input("Enter Phone Number :-"))
-#     print("Student Found")
-#
-# else:
-#     print("Invalid Choice")
+#     print("It should display student Name", name)
 
 
-print("hello world")
+def choice():
+    print(''' 1.Add New Student\n 2.Delete Student\n 3.Search Student''')
+    choice = int(input("Enter You choice :- "))
+    return choice
+
+
+if _name_ == "_main_":
+    f = CreateRegister()
+    ch = choice()
+    if ch == 1:
+        header()
+        add(f)
+        ReadRegister()
+    elif ch == 2:
+        # header()
+        # delete()
+    elif ch == 3:
+        # header()
+        # search()
+    else:
+        print("Invalid Choice")
