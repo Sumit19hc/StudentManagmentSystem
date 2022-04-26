@@ -1,47 +1,62 @@
-def Home():
-    name = input("enter your name")
-    age = input("enter your age")
-    phone_no = input("enter your phone_no")
-    print(name, age, phone_no)
+def CreateRegister():
+    file = open("DataBase.txt", "a")
+    return file
+
+def AddToRegister(file, name, age, phoneNumber):
+    # Write Data to file
+    file.write("{}|{}|{}\n".format(name, age, phoneNumber))
 
 
-def Header():
-    print('''* \nStudent Management System\n***''')
+def CheckIfStudentExists(file, newStudentName):
+    readFile = open("DataBase.txt", "rt")
+    data = readFile.readlines()
+    for line in data:
+        # print("this is line{}".format(line))
+        splitData = line.split("|")
+        name = splitData[0]
+        age = splitData[1]
+        phoneNumber = splitData[2]
+        if (newStudentName == name):
+            print("Student={} already exists".format(newStudentName))
+            return True
 
 
-def Add():
-    print("Add New Student")
+def Add(file):
     name = input("Enter Name :- ")
-    age = int(input("Enter Age :- "))
-    phone_number = int(input("Enter Phone Number :-"))
-    print("New Student is added")
-
-
-def Delete():
-    name = input("Enter Name of Student:- ")
-    print("Delete Student")
-
-
-def Display():
-    name = input("Enter Name of Student:- ")
-    print("It should display student Name", name)
-def choice():
-    print(''' 1.Add New Student\n 2.Delete Student\n 3.Search Student''')
-    choice = int(input("Enter You choice :- "))
-    return choice
+    check=CheckIfStudentExists(file,name)
+    if check is True:
+        print("student already exit ")
+        return False
+    else:
+        age = input("Enter the age:")
+        phoneNumber = input("Enter the phone number:")
+        AddToRegister(file, name, age, phoneNumber)
 
 
 if __name__ == "__main__":
-    Header()
-    ch = choice()
-    if (ch== 1):
-        Header()
-        Add()
-    elif (ch== 2):
-        Header()
-        Delete()
-    elif (ch== 3):
-        Header()
-        Display()
-    else:
-        print("Invalid Choice")
+    file = CreateRegister()
+
+print("=========================================\n")
+print("  Wainganga College Of engineering  \n")
+print("=========================================\n")
+
+print("Choose your Action\n")
+print("1.	Add new Student")
+print("2.	Delete Student")
+print("3. 	Search Student")
+
+choice = int(input("Your input please :"))
+print("User have selected: userChoice={}".format(choice))
+if(choice == 1):
+    Add(file)
+    print("New Student is added")
+
+elif(choice == 2):
+    name = input("Enter Name of Student:- ")
+    print("Delete Student")
+elif(choice == 3):
+    name = input("Enter Name of Student:- ")
+    print("It should display student Name",name)
+
+else:
+    print("Invalid Choice")
