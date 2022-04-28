@@ -1,4 +1,4 @@
-def Task1():
+def choose():
     print("======================================")
     print("Name of College:")
     print("======================================")
@@ -6,7 +6,7 @@ def Task1():
     print("Add New Student")
     print("Delete Student")
     print("Search Student")
-def Task2():
+def Add():
     print("========================================")
     print("Add New Student")
     print("========================================")
@@ -14,19 +14,19 @@ def Task2():
     age=input("Enter Age:")
     phoneNumber=input("Enter PhoneNumber:")
     print("New Student is Added")
-def Task3():
+def Delete():
     print("=========================================")
     print("Delete Student")
     print("=========================================")
     name=input("Enter Name of Student:")
     print("Student is deleted")
-def Task4():
+def Search():
     print("=========================================")
     print("Search Student")
     print("=========================================")
     name=input("Enter Name of Student:")
     print("Name:",name)
-Task1()
-Task2()
-Task3()
-Task4()
+choose()
+Add()
+Delete()
+Search()
